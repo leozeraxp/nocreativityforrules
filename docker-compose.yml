@@ -8,6 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: '123456'
     volumes:
       - 'mysql:/var/lib/mysql'
+      - './docker/database/dump.sql:/docker-entrypoint-initdb.d/dump.sql'
     networks:
       - net-mysql
     healthcheck:
