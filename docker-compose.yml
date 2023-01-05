@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    networks:
+      - net-mysql
+    healthcheck:
+      retries: 3
+      timeout: 5s
+networks:
+  net-mysql:
+    driver: bridge
+volumes:
+  mysql:
+    driver: local
